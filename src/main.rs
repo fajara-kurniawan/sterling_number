@@ -1,4 +1,5 @@
 use bigdecimal::BigDecimal;
+use std::io;
 
 fn factorial(num: u64) -> BigDecimal {
     match num {
@@ -17,7 +18,7 @@ impl GladiatorsFight{
         let stirling_number = BigDecimal::from(self.stirling_number());
         let count_permutation = BigDecimal::from(self.count_permutation());
         let result  = stirling_number/count_permutation;
-        println!("There are {} gladiators, after a long fight, The survivor replaced approximately {} times until the King of Gladiator is crowned",self.count_gladiators,result)
+        println!("There are {} gladiators, after a long fight, The survivor replaced approximately {:.2} times until the King of Gladiator is crowned",self.count_gladiators,result)
     }
 
     fn count_permutation(&self) -> BigDecimal{
@@ -42,8 +43,34 @@ impl GladiatorsFight{
 }
 
 fn main() {
-    let x = GladiatorsFight {
-        count_gladiators : 10000
-    };
-    x.change_crown();
+
+    loop {
+    println!("Please input number of gladiators");
+
+    let mut input = String::new();
+    
+    
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
+    
+    if let Err(_) = input.trim().parse::<i32>() {
+        println!("{} is not a number",input.trim());
+        continue
+    }
+    else{
+        let input : u64 = match input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => continue,
+         };
+
+         let x = GladiatorsFight {
+            count_gladiators : input
+        };
+        x.change_crown();
+        break
+    }
+
+    }
+    
 }
