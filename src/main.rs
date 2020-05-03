@@ -42,6 +42,14 @@ impl GladiatorsFight{
     }
 }
 
+fn calculate_fight(num : u64) {
+
+    let x = GladiatorsFight {
+    count_gladiators : num
+    };
+    x.change_crown();
+}
+
 fn main() {
 
     loop {
@@ -54,23 +62,14 @@ fn main() {
         .read_line(&mut input)
         .expect("Failed to read line");
     
-    if let Err(_) = input.trim().parse::<i32>() {
+    let num = input.trim().parse::<u64>();
+    if let Err(_) = num {
         println!("{} is not a number",input.trim());
         continue
-    }
-    else{
-        let input : u64 = match input.trim().parse() {
-        Ok(num) => num,
-        Err(_) => continue,
-         };
-
-         let x = GladiatorsFight {
-            count_gladiators : input
-        };
-        x.change_crown();
+    } else {
+        calculate_fight(num.unwrap());
         break
-    }
-
+        }
     }
     
 }
