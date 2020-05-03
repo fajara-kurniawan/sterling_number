@@ -1,13 +1,36 @@
 use bigdecimal::BigDecimal;
 use std::io;
 
+// fn factorial(num: u64) -> BigDecimal {
+//     match num {
+//         0 => BigDecimal::from(1),
+//         1 => BigDecimal::from(1),
+//         _ => BigDecimal::from(factorial(num - 1) * BigDecimal::from(num)),
+//     }
+// }
+
 fn factorial(num: u64) -> BigDecimal {
-    match num {
-        0 => BigDecimal::from(1),
-        1 => BigDecimal::from(1),
-        _ => BigDecimal::from(factorial(num - 1) * BigDecimal::from(num)),
+    let mut result : BigDecimal = BigDecimal::from(1);
+    for i in 1..num+1{
+        result = result*BigDecimal::from(i)
     }
+    result
+    // int factorial(int n) {
+        // int f = 1;
+        // for(int i=1;i<=n;i++) {
+        //     f *= i;
+        // }
+        // return f;
+    // }
+    // match num {
+    //     0 => BigDecimal::from(1),
+    //     1 => BigDecimal::from(1),
+    //     _ => count for i in 1..num{ }
+        
+    //     // BigDecimal::from(factorial(num - 1) * BigDecimal::from(num)),
+    // }
 }
+
 
 struct GladiatorsFight{
     count_gladiators : u64
