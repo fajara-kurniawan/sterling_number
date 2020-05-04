@@ -15,20 +15,6 @@ fn factorial(num: u64) -> BigDecimal {
         result = result*BigDecimal::from(i)
     }
     result
-    // int factorial(int n) {
-        // int f = 1;
-        // for(int i=1;i<=n;i++) {
-        //     f *= i;
-        // }
-        // return f;
-    // }
-    // match num {
-    //     0 => BigDecimal::from(1),
-    //     1 => BigDecimal::from(1),
-    //     _ => count for i in 1..num{ }
-        
-    //     // BigDecimal::from(factorial(num - 1) * BigDecimal::from(num)),
-    // }
 }
 
 
